@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PlainScheduleController.Hubs;
 
-namespace PlainScheduleController
+namespace PlaneScheduleManager
 {
     public class Startup
     {
@@ -21,6 +21,10 @@ namespace PlainScheduleController
         {
             services.AddRazorPages();
             services.AddSignalR();
+
+            services.AddSingleton<IAudioManager>(provider => new AudioFileManager(Configuration.GetValue<string>("FlightData:AudioFileDirectory")));
+            services.AddSingleton<IFlightsDataProcessor>(provider => new FlightsDataProcessor(Configuration.GetValue<string>("FlightData:FlightFileDirectory")));
+            services.AddSingleton<IEventSelector, EventSelector>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace PlainScheduleController
+namespace PlaneScheduleManager
 {
     public class Program
     {
@@ -15,6 +16,10 @@ namespace PlainScheduleController
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                })
+                .ConfigureServices(services =>
+                {
+                    services.AddHostedService<FlightsEventScheduler>();
                 });
     }
 }
