@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Hosting;
-using PlainScheduleController.Data;
-using PlainScheduleController.Hubs;
+using PlaneScheduleManager.Data;
+using PlaneScheduleManager.Hubs;
 using PlaneScheduleManager.Data;
 using System;
 using System.Threading;

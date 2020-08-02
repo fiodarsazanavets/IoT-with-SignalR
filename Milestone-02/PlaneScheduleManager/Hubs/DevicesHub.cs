@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.SignalR;
-using PlainScheduleController.Data;
+using PlaneScheduleManager.Data;
 using System;
 using System.Threading.Tasks;
 
-namespace PlainScheduleController.Hubs
+namespace PlaneScheduleManager.Hubs
 {
     public class DevicesHub : Hub
     {

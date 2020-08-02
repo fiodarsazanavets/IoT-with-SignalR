@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace PlainScheduleController
+namespace PlaneScheduleManager
 {
     public class Program
     {

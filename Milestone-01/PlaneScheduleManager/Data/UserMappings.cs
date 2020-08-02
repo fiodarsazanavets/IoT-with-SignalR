@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PlainScheduleController.Data
+namespace PlaneScheduleManager.Data
 {
     public static class UserMappings
     {

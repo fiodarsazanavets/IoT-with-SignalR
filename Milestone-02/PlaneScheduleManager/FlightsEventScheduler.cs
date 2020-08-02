@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Hosting;
-using PlainScheduleController.Hubs;
+using PlaneScheduleManager.Hubs;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
