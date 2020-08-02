@@ -8,3 +8,8 @@ services:
     restart: unless-stopped
     devices:
      - /dev/snd
+    environment:
+     - DEVICE_IDENTIFIER: '12345'
+     - AREA_NAME: 'North Wing'
+     - GATE_NUMBER: '1'
+     - HUB_URL: 'http://localhost:57100/devicesHub'

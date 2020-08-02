@@ -11,17 +11,10 @@ namespace AudioPlayer
 
         static async Task Main()
         {
-            Console.WriteLine("Please provide device identifier.");
-            var identifier = Console.ReadLine();
-
-            Console.WriteLine("Please provide the area name for the device.");
-            var areaName = Console.ReadLine();
-
-            Console.WriteLine("Please provide departure gate number for the device to be positioned at.");
-            var gateNumber = Console.ReadLine();
-
-            Console.WriteLine("Please provide the URL, e.g http://localhost:57100/devicesHub.");
-            var hubUrl = Console.ReadLine();
+            var identifier = Environment.GetEnvironmentVariable("DEVICE_IDENTIFIER");
+            var areaName = Environment.GetEnvironmentVariable("AREA_NAME");
+            var gateNumber = Environment.GetEnvironmentVariable("GATE_NUMBER");
+            var hubUrl = Environment.GetEnvironmentVariable("HUB_URL");
 
             var connection = new HubConnectionBuilder()
                 .WithUrl(hubUrl)
