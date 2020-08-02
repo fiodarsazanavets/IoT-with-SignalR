@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  audioplayer:
+    image: fsazanavets/signalr-audio-player:linux
+    volumes:
+     - /usr/bin/aplay:/usr/bin/aplay
+    restart: unless-stopped
+    devices:
+     - /dev/snd

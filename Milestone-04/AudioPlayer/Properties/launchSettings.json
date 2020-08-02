@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AudioPlayer": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
