@@ -45,7 +45,7 @@ namespace PlaneScheduleManager.Hubs
 
         public async Task BroadcastPlaybackStatus(string areaName, bool playing)
         {
-            await Clients.Groups(areaName).SendAsync("ReceiveDeviceConnected", playing);
+            await Clients.Groups(areaName).SendAsync("ReceivePlaybackStatus", playing);
         }
 
         public override async Task OnDisconnectedAsync(Exception exception)

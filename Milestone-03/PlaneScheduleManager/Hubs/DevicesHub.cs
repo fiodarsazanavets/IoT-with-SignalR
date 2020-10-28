@@ -20,11 +20,6 @@ namespace PlaneScheduleManager.Hubs
             await Clients.Groups("Master").SendAsync("ChangeConnectionStatus", deviceId, true);
         }
 
-        public async Task SendAudioToDevices(byte[] content)
-        {
-            await Clients.All.SendAsync("ReceiveAudio", content);
-        }
-
         public async Task RegisterAsManager()
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, "Master");
@@ -32,7 +27,7 @@ namespace PlaneScheduleManager.Hubs
 
         public async Task BroadcastPlaybackStatus(string areaName, bool playing)
         {
-            await Clients.Groups(areaName).SendAsync("ReceiveDeviceConnected", playing);
+            await Clients.Groups(areaName).SendAsync("ReceivePlaybackStatus", playing);
         }
 
         public override async Task OnDisconnectedAsync(Exception exception)
