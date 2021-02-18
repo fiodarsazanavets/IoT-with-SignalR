@@ -6,8 +6,6 @@ namespace AudioPlayer
 {
     class Program
     {
-        private static readonly int timeoutSeconds = 60;
-
         static async Task Main()
         {
             Console.WriteLine("Please provide device identifier.");
