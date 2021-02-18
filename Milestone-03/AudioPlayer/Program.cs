@@ -16,9 +16,6 @@ namespace AudioPlayer
             Console.WriteLine("Please provide the area name for the device.");
             var areaName = Console.ReadLine();
 
-            Console.WriteLine("Please provide departure gate number for the device to be positioned at.");
-            var gateNumber = Console.ReadLine();
-
             var connection = new HubConnectionBuilder()
                 .WithUrl("http://localhost:57100/devicesHub")
                 .Build();
@@ -26,7 +23,7 @@ namespace AudioPlayer
             connection.On<byte[]>("ReceiveAudio", HandleFileData);
 
             await connection.StartAsync();
-            await connection.InvokeAsync("ReceiveDeviceConnected", identifier, areaName, gateNumber);
+            await connection.InvokeAsync("ReceiveDeviceConnected", identifier, areaName);
 
             while (true)
             {
