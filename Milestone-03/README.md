@@ -1,6 +1,6 @@
 # Milestone 3 - Group IoT applications by area
 
-This solution groups the IoT devices by area, so only those devices that are located in a paticular area will receive audio.
+This solution groups the IoT devices by area, so only those devices that are located in a particular area will receive audio.
 
 The areas that the devices are mapped to are represented by SignalR groups, which are handled by a custom dictionary.
 
