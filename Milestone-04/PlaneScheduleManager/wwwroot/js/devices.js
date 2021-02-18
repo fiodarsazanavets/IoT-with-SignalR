@@ -34,14 +34,6 @@ connection.start().then(function () {
     return console.error(err.toString());
 });
 
-document.getElementById("broadcastAudioButton").addEventListener("click", function (event) {
-    var fileName = document.getElementById("fileNameInput").value;
-    connection.invoke("SendAudioToDevices", fileName).catch(function (err) {
-        return console.error(err.toString());
-    });
-    event.preventDefault();
-});
-
 function createNewDeviceRecord(deviceId, pollTime, pollTimeSpanId) {
     // Ensure that deviceId doesn't brake HTML
     var encodedDeviceId = deviceId.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");

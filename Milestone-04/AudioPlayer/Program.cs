@@ -11,22 +11,24 @@ namespace AudioPlayer
 
         static async Task Main()
         {
-            var identifier = Environment.GetEnvironmentVariable("DEVICE_IDENTIFIER");
-            var areaName = Environment.GetEnvironmentVariable("AREA_NAME");
-            var gateNumber = Environment.GetEnvironmentVariable("GATE_NUMBER");
-            var hubUrl = Environment.GetEnvironmentVariable("HUB_URL");
+            Console.WriteLine("Please provide device identifier.");
+            var identifier = Console.ReadLine();
+
+            Console.WriteLine("Please provide the area name for the device.");
+            var areaName = Console.ReadLine();
+
+            Console.WriteLine("Please provide departure gate number for the device to be positioned at.");
+            var gateNumber = Console.ReadLine();
 
             var connection = new HubConnectionBuilder()
-                .WithUrl(hubUrl)
+                .WithUrl("http://localhost:57100/devicesHub")
                 .Build();
 
             connection.On<byte[]>("ReceiveAudio", HandleFileData);
             connection.On<bool>("ReceivePlaybackStatus", (playing) => holdOffPlayback = playing);
 
             await connection.StartAsync();
-            Console.WriteLine("Connection Established");
             await connection.InvokeAsync("ReceiveDeviceConnected", identifier, areaName, gateNumber);
-            Console.WriteLine("Device Registered");
 
             while (true)
             {

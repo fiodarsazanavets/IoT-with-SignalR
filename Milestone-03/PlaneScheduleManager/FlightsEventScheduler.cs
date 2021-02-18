@@ -55,12 +55,7 @@ namespace PlaneScheduleManager
                         }
                         else
                         {
-                            var connectionId = LocationMappings.GetConnectionId(flight.Gate);
-
-                            if (!string.IsNullOrWhiteSpace(connectionId))
-                                await _hubContext.Clients.Client(connectionId).SendAsync(receiveAudioMethodName, audioContent);
-                            else
-                                await _hubContext.Clients.Groups(GateLocations.GetLocationName(flight.Gate)).SendAsync(receiveAudioMethodName, audioContent);
+                            await _hubContext.Clients.Groups(GateLocations.GetLocationName(flight.Gate)).SendAsync(receiveAudioMethodName, audioContent);
                         }
                     }
                 }

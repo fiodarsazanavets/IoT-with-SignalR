@@ -12,10 +12,9 @@ namespace PlaneScheduleManager.Hubs
             await Clients.Groups("Master").SendAsync("UpdateDeviceStatus", deviceId, DateTimeOffset.UtcNow);
         }
 
-        public async Task ReceiveDeviceConnected(string deviceId, string areaName, string gateNumber)
+        public async Task ReceiveDeviceConnected(string deviceId, string areaName)
         {
-            UserMappings.AddDeviceConnected(deviceId, Context.ConnectionId);           
-            LocationMappings.MapDeviceToGate(gateNumber, Context.ConnectionId);
+            UserMappings.AddDeviceConnected(deviceId, Context.ConnectionId);
             await Groups.AddToGroupAsync(Context.ConnectionId, areaName);
             await Clients.Groups("Master").SendAsync("ChangeConnectionStatus", deviceId, true);
         }
@@ -23,11 +22,6 @@ namespace PlaneScheduleManager.Hubs
         public async Task RegisterAsManager()
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, "Master");
-        }
-
-        public async Task BroadcastPlaybackStatus(string areaName, bool playing)
-        {
-            await Clients.Groups(areaName).SendAsync("ReceivePlaybackStatus", playing);
         }
 
         public override async Task OnDisconnectedAsync(Exception exception)

@@ -18,17 +18,14 @@ namespace PlaneScheduleManager
 
         public byte[] GetAudio(FlightDataModel data, FlightEvent flightEvent)
         {
-            return GetAudio($"{data.DestinationCode}_{flightEvent}");
-        }
-
-        public byte[] GetAudio(string fileName)
-        {
-            var fullFileName = $"{_audioPath}{Path.DirectorySeparatorChar}{fileName}.mp3";
+            var fullFileName = $"{_audioPath}{Path.DirectorySeparatorChar}{data.DestinationCode}_{flightEvent}.mp3";
 
             if (!File.Exists(fullFileName))
                 return null;
 
             return File.ReadAllBytes(fullFileName);
+
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,9 +1,9 @@
-# Milestone 4 - Enabling IoT appication deployment via Docker
+# Milestone 4 - Enabling IoT applications to run as a single cluster
 
-This solution has an example of a Dockerfile for building a Linux Docker container image for the .NET client application. It also has an example of docker-compose.yml file that has all parameters pre-configured to run this application on a Linux device.
+This solution adds the ability for the devices to communicate with each other via the SignalR hub.
 
-The content of the docker-compose.yml file is equivalent of the following "docker run" command:
+Devices are mapped to areas, which are represented by SignalR groups, and individual departure gate locations, which are handled by a custom dictionary.
 
-```
-docker run --name audioplayer --device /dev/snd -v /usr/bin/aplay -e DEVICE_IDENTIFIER=12345 -e AREA_NAME="North Wing" -e GATE_NUMBER=1 -e HUB_URL=http://localhost:57100/devicesHub fsazanavets/signalr-audio-player:linux
-```
+When the client application starts a playback, it sends a message to the hub, which broadcasts to all other application instances assigned to the same area that the playback has started. If any client application receives such message, it will postpone its own playback either until the other instance has completed playback or no such message was received within a specific timeout period.
+
+Since the client app instances are now assigned to individual locations, the server application can now send audio data to individual devices, unless a specific location doesn't have an active client connection. If this is the case, it broadcasts data to all available devices in the area.

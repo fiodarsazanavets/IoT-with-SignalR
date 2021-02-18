@@ -5,13 +5,7 @@ VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlaneScheduleManager", "PlaneScheduleManager\PlaneScheduleManager.csproj", "{39533823-C76B-46AF-9904-0DAC41F05118}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AudioPlayer", "AudioPlayer\AudioPlayer.csproj", "{8584EC2E-E077-44E5-A2AA-2EA24422FCAB}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{DD2E3CB5-4EAB-40FE-B54C-BCAD5DB70652}"
-	ProjectSection(SolutionItems) = preProject
-		docker-compose.yml = docker-compose.yml
-		Dockerfile = Dockerfile
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioPlayer", "AudioPlayer\AudioPlayer.csproj", "{8584EC2E-E077-44E5-A2AA-2EA24422FCAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
